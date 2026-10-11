@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мое Портфолио</title>
+    <!-- Подключаем Tailwind CSS через CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        /* Переменные для светлой и темной темы */
+        :root {
+            --bg: #ffffff;
+            --fg: #111827;
+            --card-bg: #f3f4f6;
+        }
+        [data-theme="dark"] {
+            --bg: #0b1220;
+            --fg: #e5e7eb;
+            --card-bg: #1e293b;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .custom-card {
+            background-color: var(--card-bg);
+        }
+        /* Видимый фокус для клавиатуры (доступность) */
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+            outline: 3px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- СЕМАНТИКА: header и nav -->
+    <header class="sticky top-0 z-50 shadow-md backdrop-blur-md bg-opacity-90 bg-[var(--bg)]">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <span class="font-bold text-xl">Имя Фамилия</span>
+            <nav class="flex gap-6 items-center">
+                <a href="#about" class="hover:text-blue-500 transition">О себе</a>
+                <a href="#projects" class="hover:text-blue-500 transition">Проекты</a>
+                <a href="#contact" class="hover:text-blue-500 transition">Контакты</a>
+                <!-- Кнопка темы -->
+                <button id="theme-toggle" class="px-3 py-1.5 rounded border border-gray-400 text-sm cursor-pointer">🌙 Тема</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- СЕМАНТИКА: main -->
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-20">
+
+        <!-- СЕКЦИЯ 1: О себе -->
+        <section id="about" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-10">
+            <div class="space-y-4">
+                <h1 class="text-4xl font-extrabold tracking-tight">Привет, я начинающий веб-разработчик</h1>
+                <p class="text-lg opacity-90">Здесь написан текст о моем опыте, увлечениях и учебе. Я активно изучаю основы фронтенда, создаю адаптивные интерфейсы и пишу чистый код на HTML, CSS и JavaScript.</p>
+            </div>
+            <div>
+                <!-- Картинка с обязательным alt -->
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Фото рабочего места разработчика с ноутбуком" class="rounded-lg shadow-lg w-full h-auto object-cover">
+            </div>
+        </section>
+
+        <!-- СЕКЦИЯ 2: Проекты (Реальное изменение макета: на мобилках 1 колонка, на десктопе 3) -->
+        <section id="projects" class="py-10">
+            <h2 class="text-3xl font-bold mb-8 text-center">Мои проекты</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Проект 1 -->
+                <article class="custom-card p-6 rounded-lg shadow flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Проект 1: Лендинг</h3>
+                        <p class="text-sm opacity-80 mb-4">Адаптивный маркетинговый лендинг, созданный на чистом HTML и CSS в рамках первой недели обучения.</p>
+                    </div>
+                    <a href="https://github.com" target="_blank" class="text-blue-500 font-medium hover:underline inline-block mt-4">Открыть проект &rarr;</a>
+                </article>
+                <!-- Проект 2 -->
+                <article class="custom-card p-6 rounded-lg shadow flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Проект 2: Интерактивный калькулятор</h3>
+                        <p class="text-sm opacity-80 mb-4">Приложение на vanilla JavaScript для расчета параметров, написанное во второй учебной неделе.</p>
+                    </div>
+                    <a href="https://github.com" target="_blank" class="text-blue-500 font-medium hover:underline inline-block mt-4">Открыть проект &rarr;</a>
+                </article>
+                <!-- Проект 3 -->
+                <article class="custom-card p-6 rounded-lg shadow flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Проект 3: Погодное приложение</h3>
+                        <p class="text-sm opacity-80 mb-4">Клиентское приложение с запросами к API и динамическим обновлением DOM из заданий четвертой недели.</p>
+                    </div>
+                    <a href="https://github.com" target="_blank" class="text-blue-500 font-medium hover:underline inline-block mt-4">Открыть проект &rarr;</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- СЕКЦИЯ 3: Контакты и форма -->
+        <section id="contact" class="py-10 max-w-xl mx-auto w-full">
+            <h2 class="text-3xl font-bold mb-6 text-center">Свяжитесь со мной</h2>
+            <!-- novalidate отключает стандартные подсказки браузера -->
+            <form id="contact-form" novalidate class="space-y-4 custom-card p-6 rounded-lg shadow">
+                <div>
+                    <!-- Связка label и input через for/id -->
+                    <label for="name" class="block text-sm font-medium mb-1">Ваше имя</label>
+                    <input type="text" id="name" class="w-full px-3 py-2 border rounded-md bg-[var(--bg)] border-gray-400">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium mb-1">Email</label>
+                    <input type="email" id="email" class="w-full px-3 py-2 border rounded-md bg-[var(--bg)] border-gray-400">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium mb-1">Сообщение</label>
+                    <textarea id="message" rows="4" class="w-full px-3 py-2 border rounded-md bg-[var(--bg)] border-gray-400"></textarea>
+                </div>
+                <!-- Контейнер для вывода ошибок или успеха -->
+                <div id="form-feedback" class="text-sm font-medium"></div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition cursor-pointer">Отправить</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- СЕМАНТИКА: footer -->
+    <footer class="text-center py-6 border-t border-gray-700 mt-10 text-sm opacity-70">
+        <p>&copy; 2026 Имя Фамилия. Все права защищены.</p>
+    </footer>
+
+    <!-- СКРИПТЫ: переключение темы и валидация формы -->
+    <script>
+        // 1. Логика переключения тем
+        const htmlElement = document.documentElement;
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.getAttribute('data-theme') === 'dark') {
+                htmlElement.removeAttribute('data-theme');
+                themeToggleBtn.textContent = '🌙 Тема';
+            } else {
+                htmlElement.setAttribute('data-theme', 'dark');
+                themeToggleBtn.textContent = '☀️ Тема';
+            }
+        });
+
+        // 2. Валидация формы (своими руками)
+        const form = document.getElementById('contact-form');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+        const feedback = document.getElementById('form-feedback');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // отменяем стандартную отправку
+            feedback.textContent = '';
+            feedback.className = 'text-sm font-medium';
+
+            // Проверка на пустые обязательные поля
+            if (!nameInput.value.trim() || !emailInput.value.trim() || !messageInput.value.trim()) {
+                feedback.textContent = 'Ошибка: Пожалуйста, заполните все обязательные поля формы!';
+                feedback.classList.add('text-red-500');
+                return;
+            }
+
+            // Проверка email на корректность (маскированная проверка)
+            const emailValue = emailInput.value.trim();
+            if (!emailValue.includes('@') || !emailValue.includes('.')) {
+                feedback.textContent = 'Ошибка: Введен некорректный формат email адреса (отсутствует символ @ или доменная точка).';
+                feedback.classList.add('text-red-500');
+                return;
+            }
+
+            // Успешная отправка
+            feedback.textContent = 'Спасибо! Ваше сообщение успешно отправлено.';
+            feedback.classList.add('text-green-500');
+            form.reset();
+        });
+    </script>
+</body>
+</html>
