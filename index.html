@@ -36,15 +36,20 @@
 <body class="font-sans antialiased">
 
     <!-- СЕМАНТИКА: header и nav -->
+    <!-- СЕМАНТИКА: header и nav -->
     <header class="sticky top-0 z-50 shadow-md backdrop-blur-md bg-opacity-90 bg-[var(--bg)]">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center gap-4">
-            <span class="font-bold text-xl">Meruyert Adigaliyeva</span>
-            <nav class="flex flex-wrap gap-4 items-center text-sm sm:text-base">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col items-center gap-3">
+            <!-- Верхняя строка: Имя и кнопка темы -->
+            <div class="w-full flex justify-between items-center">
+                <span class="font-bold text-lg">Meruyert Adigaliyeva</span>
+                <!-- Кнопка темы -->
+                <button id="theme-toggle" class="px-3 py-1 rounded border border-gray-400 text-xs sm:text-sm cursor-pointer">🌙 Theme</button>
+            </div>
+            <!-- Нижняя строка: Навигация по центру -->
+            <nav class="flex gap-6 items-center text-sm font-medium">
                 <a href="#about" class="hover:text-blue-500 transition">About Me</a>
                 <a href="#projects" class="hover:text-blue-500 transition">Projects</a>
                 <a href="#contact" class="hover:text-blue-500 transition">Contact</a>
-                <!-- Кнопка темы -->
-                <button id="theme-toggle" class="px-3 py-1.5 rounded border border-gray-400 text-sm cursor-pointer">🌙 Theme</button>
             </nav>
         </div>
     </header>
